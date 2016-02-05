@@ -1,0 +1,81 @@
+﻿@using SS.Web.Features.Class
+@model Create.Command
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<form method="post" action="/Class/Create">
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Create a Class</h4>
+        <hr />
+        @Html.ValidationDiv()
+
+        @Html.FormBlock(m => m.Title)
+        @*@Html.FormBlock(m => m.RelatedChapter)
+            @Html.FormBlock(m => m.RelatedChapter)
+            @Html.FormBlock(m => m.Summary)
+            @Html.FormBlock(m => m.Content)*@
+        <div class="form-group">
+            <label class="control-label col-md-2" for="RelatedBook">Related Book</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.RelatedBook, Model.BookNameList, Model.RelatedBook, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="RelatedChapter">Related Chapter</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.RelatedChapter, new List<SelectListItem>(), new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Summary">Summary</label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(m => m.Summary, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Content">Content</label>
+            <div class="col-md-10">
+               @Html.TextAreaFor(m=>m.AddedBy, new { @class = "form-control", @id = "editor1", @rows = "10", @cols = "60", @name = "Content" })
+                @*<textarea id="editor1" class="form-control" row="10" cols="60" name="Content"></textarea>*@
+                @Html.HiddenFor(m=>m.Content, new { @id="hcontent" })
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input id="bsubmit" type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+    <script>
+        CKEDITOR.replace('editor1',{});
+        $('#bsubmit').hover(function () {
+            $("#hcontent").val(CKEDITOR.instances['editor1'].getData());
+        });
+       
+
+
+
+    </script>
+
+
+    <div>
+        @*@(Html.Link<UiController>(c => c.Index(null), "Back to List"))*@
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+
+
+

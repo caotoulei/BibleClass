@@ -1,0 +1,74 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+/*form wysiwyg editor*/
+#editor {
+max-height: 250px;
+height: 250px;
+background-color: white;
+border-collapse: separate;
+border: 1px solid rgb(204, 204, 204);
+padding: 4px;
+box-sizing: content-box;
+-webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+border-top-right-radius: 3px; border-bottom-right-radius: 3px;
+border-bottom-left-radius: 3px; border-top-left-radius: 3px;
+overflow: scroll;
+outline: none;
+}
+#voiceBtn {
+width: 20px;
+color: transparent;
+background-color: transparent;
+transform: scale(2.0, 2.0);
+-webkit-transform: scale(2.0, 2.0);
+-moz-transform: scale(2.0, 2.0);
+border: transparent;
+cursor: pointer;
+box-shadow: none;
+-webkit-box-shadow: none;
+}
+div[data-role="editor-toolbar"] {
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.dropdown-menu a {
+cursor: pointer;
+}
+
+.clearfix {
+}
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.clearfix:after {
+    clear: both;
+}
